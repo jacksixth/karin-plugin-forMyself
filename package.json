@@ -1,16 +1,12 @@
 {
   "name": "karin-plugin-template",
-  "version": "0.0.1",
-  "description": "karin plugin template",
-  "homepage": "https://github.com/KarinJS/karin-plugin-template",
-  "bugs": {
-    "url": "https://github.com/KarinJS/karin-plugin-template/issues"
-  },
+  "version": "1.0.0",
+  "description": "karin plugin bilibili",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KarinJS/karin-plugin-template.git"
+    "url": "git+https://github.com/KarinJS/karin-plugin-bilibili.git"
   },
-  "author": "Lain",
+  "author": "jack",
   "type": "module",
   "main": "lib/index.js",
   "scripts": {
@@ -23,7 +19,7 @@
     "neostandard": "^0.12.0"
   },
   "peerDependencies": {
-    "node-karin": "0.12.25-beta.pr.206.1-1734707881"
+    "node-karin": "1.0.3"
   },
   "karin": {
     "apps": [
