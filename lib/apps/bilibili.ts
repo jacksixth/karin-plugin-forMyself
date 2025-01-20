@@ -5,8 +5,12 @@ import { getVideoInfo } from "../utils/libs/video"
 import { getDynamicInfo } from "../utils/libs/dynamic"
 import { getLiveRoomInfo } from "../utils/libs/live"
 import { getArticleInfo } from "../utils/libs/article"
-//所有信息都过一遍
-export const analysis = karin.command(/.*/, async (e) => {
+//bilibili 解析
+const _config = config()
+const reg = new RegExp(
+  /(((b23|acg)\.tv|bili2233.cn)\/[0-9a-zA-Z]+)|(bilibili\.com\/video\/(?:av(\d+)|(bv[\da-z]+)))|(t\.bilibili\.com\/(\d+))|(m\.bilibili\.com\/dynamic\/(\d+))|(www\.bilibili\.com\/opus\/(\d+))|(bilibili\.com\/read\/(?:cv|mobile\/)(\d+))|(live\.bilibili\.com\/blanc\/(\d+))/gi
+)
+export const bilibili = karin.command(reg, async (e) => {
   const firstMessage = e.elements[0]
   let url
   let isMiniProgram = false
@@ -23,7 +27,7 @@ export const analysis = karin.command(/.*/, async (e) => {
   if (!avid && !bvid && !arid && !dyid && !lrid) return false
 
   if (isMiniProgram) {
-    if (e.subEvent === "group" && config().recallMiniProgram) {
+    if (e.subEvent === "group" && _config.recallMiniProgram) {
       const userInfo = await e.bot.getGroupMemberInfo(e.groupId, e.bot.selfId)
       if (
         userInfo.role === "owner" ||
@@ -34,24 +38,24 @@ export const analysis = karin.command(/.*/, async (e) => {
     }
   }
 
-  if (config().getInfo.getVideoInfo && (avid || bvid)) {
+  if (_config.getInfo.getVideoInfo && (avid || bvid)) {
     const res = await getVideoInfo({ aid: avid, bvid }, logger)
     karin.sendMsg(e.bot.selfId, e.contact, res)
     return false
   }
 
-  if (config().getInfo.getLiveRoomInfo && lrid) {
+  if (_config.getInfo.getLiveRoomInfo && lrid) {
     const res = await getLiveRoomInfo(lrid, logger)
     karin.sendMsg(e.bot.selfId, e.contact, res)
     return false
   }
-  if (config().getInfo.getArticleInfo && arid) {
+  if (_config.getInfo.getArticleInfo && arid) {
     const res = await getArticleInfo(arid, logger)
     karin.sendMsg(e.bot.selfId, e.contact, res)
     return false
   }
 
-  if (config().getInfo.getDynamicInfo && dyid) {
+  if (_config.getInfo.getDynamicInfo && dyid) {
     const res = await getDynamicInfo(dyid, logger)
     karin.sendMsg(e.bot.selfId, e.contact, res)
     return false
@@ -76,7 +80,7 @@ const getIdFromNormalLink = (link: string) => {
     []
   const searchArticle =
     /bilibili\.com\/read\/(?:cv|mobile\/)(\d+)/i.exec(link) || []
-  const searchLiveRoom = /live\.bilibili\.com\/(\d+)/i.exec(link) || []
+  const searchLiveRoom = /live\.bilibili\.com\/blanc\/(\d+)/i.exec(link) || []
   return {
     avid: searchVideo[1],
     bvid: searchVideo[2],

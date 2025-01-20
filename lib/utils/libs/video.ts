@@ -1,12 +1,12 @@
 import axios from "node-karin/axios"
 import { humanNum } from "./utils.ts"
 import { USER_AGENT } from "./const.ts"
-import { LoggerType } from "node-karin"
+import { Logger } from "node-karin"
 import { segment } from "node-karin"
 
 export const getVideoInfo = async (
   params: { aid?: string; bvid?: string },
-  logger: LoggerType
+  logger: Logger
 ) => {
   try {
     const response = await axios.get(

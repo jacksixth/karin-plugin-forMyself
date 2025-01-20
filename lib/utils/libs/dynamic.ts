@@ -1,11 +1,11 @@
 import axios from "node-karin/axios"
 import { humanNum } from "./utils.ts"
-import { LoggerType } from "node-karin"
+import { Logger } from "node-karin"
 import { segment } from "node-karin"
 import { FAKE_COOKIE, USER_AGENT } from "./const.ts"
 import { purgeLinkInText } from "./utils.ts"
 
-export const getDynamicInfo = async (id: string, logger: LoggerType) => {
+export const getDynamicInfo = async (id: string, logger: Logger) => {
   try {
     const response = await axios.get(
       "https://api.bilibili.com/x/polymer/web-dynamic/v1/detail",

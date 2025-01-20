@@ -1,10 +1,10 @@
 {
-  "name": "karin-plugin-template",
+  "name": "karin-plugin-forMyself",
   "version": "1.0.0",
-  "description": "karin plugin bilibili",
+  "description": "karin plugin forMyself",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KarinJS/karin-plugin-bilibili.git"
+    "url": "git+https://github.com/jacksixth/karin-plugin-forMyself.git"
   },
   "author": "jack",
   "type": "module",
