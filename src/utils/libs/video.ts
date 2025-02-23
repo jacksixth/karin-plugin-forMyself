@@ -1,6 +1,6 @@
 import axios from "node-karin/axios"
-import { humanNum } from "./utils.ts"
-import { USER_AGENT } from "./const.ts"
+import { humanNum } from "./utils"
+import { USER_AGENT } from "./const"
 import { Logger } from "node-karin"
 import { segment } from "node-karin"
 

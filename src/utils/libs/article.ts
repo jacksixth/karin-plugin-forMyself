@@ -1,8 +1,8 @@
 import axios from "node-karin/axios"
-import { humanNum } from "./utils.ts"
+import { humanNum } from "./utils"
 import { Logger } from "node-karin"
 import { segment } from "node-karin"
-import { USER_AGENT } from "./const.ts"
+import { USER_AGENT } from "./const"
 
 export const getArticleInfo = async (id: string, logger: Logger) => {
   try {

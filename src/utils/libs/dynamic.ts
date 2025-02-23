@@ -1,9 +1,9 @@
 import axios from "node-karin/axios"
-import { humanNum } from "./utils.ts"
+import { humanNum } from "./utils"
 import { Logger } from "node-karin"
 import { segment } from "node-karin"
-import { FAKE_COOKIE, USER_AGENT } from "./const.ts"
-import { purgeLinkInText } from "./utils.ts"
+import { FAKE_COOKIE, USER_AGENT } from "./const"
+import { purgeLinkInText } from "./utils"
 
 export const getDynamicInfo = async (id: string, logger: Logger) => {
   try {
@@ -39,10 +39,23 @@ export const getDynamicInfo = async (id: string, logger: Logger) => {
     return [segment.text("动态信息获取失败~")]
   }
 }
-
+interface Vote {
+  desc: string
+  end_time: number
+  join_num: number
+}
+interface Reserve {
+  title: string
+  desc1?: { text: string }
+  desc2?: { text: string }
+}
 const additionalFormatters = {
   // 投票
-  ADDITIONAL_TYPE_VOTE: ({ vote: { desc, end_time, join_num } }) => [
+  ADDITIONAL_TYPE_VOTE: ({
+    vote: { desc, end_time, join_num },
+  }: {
+    vote: Vote
+  }) => [
     segment.text(
       [
         `【投票】${desc}`,
@@ -54,7 +67,11 @@ const additionalFormatters = {
   ],
 
   // 预约
-  ADDITIONAL_TYPE_RESERVE: ({ reserve: { title, desc1, desc2 } }) => {
+  ADDITIONAL_TYPE_RESERVE: ({
+    reserve: { title, desc1, desc2 },
+  }: {
+    reserve: Reserve
+  }) => {
     const lines = [title]
     const desc = [desc1?.text, desc2?.text].filter((v) => v)
     if (desc.length > 0) lines.push(desc.join("  "))
@@ -64,11 +81,21 @@ const additionalFormatters = {
 
 const majorFormatters = {
   // 图片
-  MAJOR_TYPE_DRAW: ({ draw: { items } }) =>
+  MAJOR_TYPE_DRAW: ({ draw: { items } }: { draw: { items: any[] } }) =>
     items.map(({ src }) => segment.image(src)),
 
   // 视频
-  MAJOR_TYPE_ARCHIVE: ({ archive: { cover, aid, bvid, title, stat } }) => [
+  MAJOR_TYPE_ARCHIVE: ({
+    archive: { cover, aid, bvid, title, stat },
+  }: {
+    archive: {
+      cover: string
+      aid: string
+      bvid: string
+      title: string
+      stat: { play: number; danmaku: number }
+    }
+  }) => [
     segment.image(cover),
     segment.text(
       [
@@ -81,7 +108,11 @@ const majorFormatters = {
   ],
 
   // 文章
-  MAJOR_TYPE_ARTICLE: ({ article: { covers, id, title, desc } }) => [
+  MAJOR_TYPE_ARTICLE: ({
+    article: { covers, id, title, desc },
+  }: {
+    article: { covers: string[]; id: string; title: string; desc: string }
+  }) => [
     ...(covers.length ? [segment.image(covers[0])] : []),
     segment.text(
       [
@@ -93,7 +124,11 @@ const majorFormatters = {
   ],
 
   // 音乐
-  MAJOR_TYPE_MUSIC: ({ music: { cover, id, title, label } }) => [
+  MAJOR_TYPE_MUSIC: ({
+    music: { cover, id, title, label },
+  }: {
+    music: { cover: string; id: string; title: string; label: string }
+  }) => [
     segment.image(cover),
     segment.text(
       [
@@ -108,6 +143,15 @@ const majorFormatters = {
   // 直播
   MAJOR_TYPE_LIVE: ({
     live: { cover, title, id, live_state, desc_first, desc_second },
+  }: {
+    live: {
+      cover: string
+      title: string
+      id: string
+      live_state: string
+      desc_first: string
+      desc_second: string
+    }
   }) => [
     segment.image(cover),
     segment.text(
@@ -120,7 +164,11 @@ const majorFormatters = {
       ].join("\n")
     ),
   ],
-  MAJOR_TYPE_LIVE_RCMD: ({ live_rcmd: { content } }) => {
+  MAJOR_TYPE_LIVE_RCMD: ({
+    live_rcmd: { content },
+  }: {
+    live_rcmd: { content: string }
+  }) => {
     const {
       live_play_info: {
         cover,
@@ -147,7 +195,11 @@ const majorFormatters = {
   },
 
   // 通用动态？
-  MAJOR_TYPE_OPUS: async ({ opus }) => {
+  MAJOR_TYPE_OPUS: async ({
+    opus,
+  }: {
+    opus: { pics: { url: string }[]; summary: { text: string }; title?: string }
+  }) => {
     const {
       pics,
       summary: { text },
@@ -156,11 +208,11 @@ const majorFormatters = {
     const lines = [] as any
     if (title) lines.push(segment.text(`《${title.trim()}》\n`))
     if (text) lines.push(segment.text(`${text.trim()}\n`))
-    if (pics.length) lines.push(...pics.map(({ url }) => segment.image(url)))
+    if (pics.length)
+      lines.push(...pics.map(({ url }: { url: string }) => segment.image(url)))
     return lines
   },
 }
-
 const formatDynamic = async (item: any) => {
   const { module_author: author, module_dynamic: dynamic } = item.modules
   const lines = [
@@ -174,12 +226,16 @@ const formatDynamic = async (item: any) => {
 
   const major = dynamic?.major
   if (major && major.type in majorFormatters) {
-    lines.push(...(await majorFormatters[major.type](major)))
+    const formatter =
+      majorFormatters[major.type as keyof typeof majorFormatters]
+    lines.push(...(await formatter(major)))
   }
 
   const additional = dynamic?.additional
   if (additional && additional.type in additionalFormatters) {
-    lines.push(...(await additionalFormatters[additional.type](additional)))
+    const formatter =
+      additionalFormatters[additional.type as keyof typeof additionalFormatters]
+    lines.push(...(await formatter(additional)))
   }
 
   if (item.type === "DYNAMIC_TYPE_FORWARD") {
