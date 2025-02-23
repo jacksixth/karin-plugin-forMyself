@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.0.1...v1.1.0) (2025-02-23)
+
+
+### Features
+
+* 添加摸鱼日报插件 ([65a3783](https://github.com/jacksixth/karin-plugin-forMyself/commit/65a37834d0d11bb446be5fc492004e8048a5b62d))
+
 ## [1.0.1](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.0.0...v1.0.1) (2025-02-23)
 
 
