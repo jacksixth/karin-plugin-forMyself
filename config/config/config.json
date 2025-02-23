@@ -1,0 +1,9 @@
+{
+  "recallMiniProgram": true,
+  "getInfo": {
+    "getVideoInfo": true,
+    "getDynamicInfo": true,
+    "getArticleInfo": true,
+    "getLiveRoomInfo": true
+  }
+}
