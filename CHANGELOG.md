@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.0.0...v1.0.1) (2025-02-23)
+
+
+### Bug Fixes
+
+* **README:** 更新 README.md 并调整 .gitignore ([eeb237d](https://github.com/jacksixth/karin-plugin-forMyself/commit/eeb237da7c20599cd7fd15d792d7e91a54b3a4bd))
+
 ## 1.0.0 (2025-02-23)
 
 
