@@ -1,4 +1,4 @@
-import karin, { logger, segment } from "node-karin"
+import karin, { Contact, logger, segment } from "node-karin"
 import axios from "node-karin/axios"
 
 //定时发送每日资讯摸鱼日报的群号
@@ -11,14 +11,18 @@ export const ribaoTask = karin.task(
   "moyuribao",
   "0 0 9 ? * MON-FRI",
   async () => {
-    await sendImg()
+    await sendImg(NOTICE_GROUP_NO, "group")
   }
 )
 //主动获取摸鱼日报、每日资讯
 export const ribao = karin.command(
   /^#?日报$/,
-  async () => {
-    await sendImg()
+  async (e) => {
+    if (e.isGroup) {
+      await sendImg([e.groupId], "group")
+    } else if (e.isPrivate) {
+      await sendImg([e.userId], "private")
+    }
     return true
   },
   {
@@ -35,12 +39,14 @@ export const ribao = karin.command(
 )
 
 //获取图片地址并发送
-const sendImg = async () => {
+const sendImg = async (sendNoList: string[], type: "group" | "private") => {
   const imgAddress = await getImgAddress()
   const myrb = imgAddress.myrb && segment.image(imgAddress.myrb)
   const mrzx = imgAddress.mrzx && segment.image(imgAddress.mrzx)
-  NOTICE_GROUP_NO.forEach(async (groupNo) => {
-    const contact = karin.contact("group", groupNo)
+  sendNoList.forEach(async (sendNo) => {
+    let contact: Contact
+    if (type === "group") contact = karin.contact("group", sendNo)
+    else contact = karin.contact("friend", sendNo)
     if (myrb && mrzx)
       karin.sendMsg(karin.getBotAll()[1].account.selfId, contact, [myrb, mrzx])
     else if (myrb)
