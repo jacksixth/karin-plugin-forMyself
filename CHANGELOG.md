@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.1.0...v1.2.0) (2025-03-03)
+
+
+### Features
+
+* **moyuribao:** 优化日报发送功能 ([3c82402](https://github.com/jacksixth/karin-plugin-forMyself/commit/3c82402adb56f607a42a5dc1cc60fb6286762d4c))
+
 ## [1.1.0](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.0.1...v1.1.0) (2025-02-23)
 
 
