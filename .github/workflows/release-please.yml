@@ -81,7 +81,7 @@ jobs:
         id: release_please
         with:
           release-type: node
-          package-name: "karin-plugin-teamspeak"
+          package-name: "karin-plugin-forMyself"
 
       # - name: 发布到 npm
       #   run: npm run pub
