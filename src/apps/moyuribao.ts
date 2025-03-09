@@ -9,7 +9,7 @@ const moyuribaoApi = "https://dayu.qqsuu.cn/moyuribao/apis.php?type=json"
 //定时发送日报
 export const ribaoTask = karin.task(
   "moyuribao",
-  "0 0 9 ? * MON-FRI",
+  "0 0 9 ? * *",
   async () => {
     await sendImg(NOTICE_GROUP_NO, "group")
   }
