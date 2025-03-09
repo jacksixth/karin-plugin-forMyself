@@ -1,9 +1,8 @@
 import karin, { Contact, logger, segment } from "node-karin"
 import axios from "node-karin/axios"
+import { config } from "@/utils"
 
 //定时发送每日资讯摸鱼日报的群号
-const NOTICE_GROUP_NO = ["832305015"]
-
 const meirizixunApi = "https://dayu.qqsuu.cn/weiyujianbao/apis.php?type=json"
 const moyuribaoApi = "https://dayu.qqsuu.cn/moyuribao/apis.php?type=json"
 //定时发送日报
@@ -11,6 +10,7 @@ export const ribaoTask = karin.task(
   "moyuribao",
   "0 0 9 ? * *",
   async () => {
+    const NOTICE_GROUP_NO = config().notifyGroupNos
     await sendImg(NOTICE_GROUP_NO, "group")
   }
 )

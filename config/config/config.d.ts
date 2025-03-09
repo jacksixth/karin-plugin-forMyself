@@ -7,4 +7,5 @@ export interface Config {
     getArticleInfo: boolean //是否获取并输出专栏信息
     getLiveRoomInfo: boolean //是否获取并输出直播间信息
   }
+  notifyGroupNos: Array<string> //每天定时发送日报的群号
 }
