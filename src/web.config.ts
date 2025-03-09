@@ -23,11 +23,11 @@ export default {
 
   /** 前端点击保存之后调用的方法 */
   save: (config: Config) => {
-    // 在这里处理保存逻辑
-    logger.info("保存的配置:", config)
     //新配置覆盖旧配置
-    Object.assign(defConfig, config)
-    writeJsonSync(`${dirConfig}/config.json`, config)
+    const newConfig = Object.assign(defConfig, config)
+    logger.info("保存的配置:", newConfig)
+    // 保存配置到文件
+    writeJsonSync(`${dirConfig}/config.json`, newConfig)
     return {
       success: true,
       message: "保存成功",
