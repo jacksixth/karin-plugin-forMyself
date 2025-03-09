@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.2.0...v1.3.0) (2025-03-09)
+
+
+### Features
+
+* **config:** 添加定时发送日报的群号配置 ([8353d63](https://github.com/jacksixth/karin-plugin-forMyself/commit/8353d633a9d377e0af1d568ad5fa3003dda1d7ca))
+* **moyuribao:** 修改日报发送时间配置 ([c1f1d79](https://github.com/jacksixth/karin-plugin-forMyself/commit/c1f1d79918571ad41a2d1b12300e83c747430eb5))
+
 ## [1.2.0](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.1.0...v1.2.0) (2025-03-03)
 
 
