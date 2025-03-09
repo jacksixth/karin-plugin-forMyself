@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.3.0...v1.3.1) (2025-03-09)
+
+
+### Bug Fixes
+
+* **config:** 优化配置保存逻辑 ([2305492](https://github.com/jacksixth/karin-plugin-forMyself/commit/230549244d61c8ff9c92472ce371f47d6dd83a25))
+
 ## [1.3.0](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.2.0...v1.3.0) (2025-03-09)
 
 
