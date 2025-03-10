@@ -8,7 +8,7 @@ import { getArticleInfo } from "../utils/libs/article"
 //bilibili 解析
 const _config = config()
 const reg = new RegExp(
-  /(((b23|acg)\.tv|bili2233.cn)\/[0-9a-zA-Z]+)|(bilibili\.com\/video\/(?:av(\d+)|(bv[\da-z]+)))|(t\.bilibili\.com\/(\d+))|(m\.bilibili\.com\/dynamic\/(\d+))|(www\.bilibili\.com\/opus\/(\d+))|(bilibili\.com\/read\/(?:cv|mobile\/)(\d+))|(live\.bilibili\.com\/blanc\/(\d+))/gi
+  /(((b23|acg)\.tv|bili2233.cn)\/[0-9a-zA-Z]+)|(bilibili\.com\/video\/(?:av(\d+)|(bv[\da-z]+)))|(t\.bilibili\.com\/(\d+))|(m\.bilibili\.com\/dynamic\/(\d+))|(www\.bilibili\.com\/opus\/(\d+))|(bilibili\.com\/read\/(?:cv|mobile\/)(\d+))|(live\.bilibili\.com\/blanc\/(\d+))|com\.tencent\.miniapp_01/gi
 )
 export const bilibili = karin.command(reg, async (e) => {
   const firstMessage = e.elements[0]
