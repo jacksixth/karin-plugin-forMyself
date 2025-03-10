@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.3.1...v1.3.2) (2025-03-10)
+
+
+### Bug Fixes
+
+* **bilibili:** 修复 bilibili 正则表达式 ([d1d024f](https://github.com/jacksixth/karin-plugin-forMyself/commit/d1d024f9d65aa50dbeab1e848e1163652918d169))
+
 ## [1.3.1](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.3.0...v1.3.1) (2025-03-09)
 
 
