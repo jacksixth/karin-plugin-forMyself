@@ -11,7 +11,13 @@ export const ribaoTask = karin.task(
   "0 0 9 ? * *",
   async () => {
     const NOTICE_GROUP_NO = config().notifyGroupNos
-    await sendImg(NOTICE_GROUP_NO, "group")
+    NOTICE_GROUP_NO.forEach((groupNo) => {
+      const contact = karin.contact("group", groupNo + "")
+      karin.sendMsg(karin.getBotAll()[1].account.selfId, contact, [
+        segment.image("https://dayu.qqsuu.cn/moyuribao/apis.php"),
+        segment.image("https://dayu.qqsuu.cn/weiyujianbao/apis.php"),
+      ])
+    })
   }
 )
 //主动获取摸鱼日报、每日资讯
