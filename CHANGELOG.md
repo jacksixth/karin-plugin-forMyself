@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.3](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.3.2...v1.3.3) (2025-04-21)
+
+
+### Bug Fixes
+
+* **moyuribao:** 修改定时发送摸鱼日报逻辑 ([269bc27](https://github.com/jacksixth/karin-plugin-forMyself/commit/269bc2789f2ded26267e05d25bba8e120f397094))
+* 跳过类型库检查 ([89de928](https://github.com/jacksixth/karin-plugin-forMyself/commit/89de9288f0f42906c0efb8f10e28e612b9c810a5))
+
 ## [1.3.2](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.3.1...v1.3.2) (2025-03-10)
 
 
