@@ -29,12 +29,12 @@ jobs:
         run: |
           pnpm install
 
-      - name: 删除 pnpm-lock.yaml
-        run: rm -rf pnpm-lock.yaml
-
       - name: 编译
         run: pnpm build
 
+      - name: 删除 js文件夹下 .d.ts 文件
+        run: find js -name "*.d.ts" -type f -delete
+        
       - name: 设置时区
         run: |
           sudo timedatectl set-timezone Asia/Shanghai
