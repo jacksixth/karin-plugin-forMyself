@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.5](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.4...v1.4.5) (2025-05-29)
+
+
+### Bug Fixes
+
+* **ts/moyuribao:** 修复日报图片加载问题 ([f6bdc92](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/f6bdc921449a6160250fd91706837ce33f7986f8))
+
 ## [1.4.4](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.3...v1.4.4) (2025-05-29)
 
 
