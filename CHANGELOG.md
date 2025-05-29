@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.4](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.3...v1.4.4) (2025-05-29)
+
+
+### Bug Fixes
+
+* 更新 release-please 工作流中的清理步骤 ([f51c2b4](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/f51c2b4d954f5e4d147b6b231ddb1bc73dc6801b))
+
 ## [1.4.3](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.2...v1.4.3) (2025-05-29)
 
 
