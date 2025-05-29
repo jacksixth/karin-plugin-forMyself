@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.7](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.6...v1.4.7) (2025-05-29)
+
+
+### Bug Fixes
+
+* **ts:** 优化 #rjs 命令的执行结果处理 ([863fd8c](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/863fd8c068bda955e674567a9b193896d66ed88a))
+
 ## [1.4.6](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.5...v1.4.6) (2025-05-29)
 
 
