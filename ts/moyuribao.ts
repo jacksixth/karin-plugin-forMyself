@@ -9,10 +9,7 @@ import axios from "node-karin/axios"
 const _config = {
   notifyGroupNos: [""], //每天定时发送日报的群号
 }
-//定时发送每日资讯摸鱼日报的群号
-const meirizixunApi = "https://dayu.qqsuu.cn/weiyujianbao/apis.php?type=json"
-const moyuribaoApi = "https://dayu.qqsuu.cn/moyuribao/apis.php?type=json"
-//定时发送日报
+//定时发送日报   0 0 9 ? * * 为每天早上9:00
 export const ribaoTask = karin.task("moyuribao", "0 0 9 ? * *", async () => {
   const NOTICE_GROUP_NO = _config.notifyGroupNos
   NOTICE_GROUP_NO.forEach((groupNo) => {
@@ -23,6 +20,9 @@ export const ribaoTask = karin.task("moyuribao", "0 0 9 ? * *", async () => {
     ])
   })
 })
+//摸鱼日报、每日资讯API 可以自行替换
+const meirizixunApi = "https://dayu.qqsuu.cn/weiyujianbao/apis.php?type=json"
+const moyuribaoApi = "https://dayu.qqsuu.cn/moyuribao/apis.php?type=json"
 //主动获取摸鱼日报、每日资讯
 export const ribao = karin.command(
   /^#?日报$/,

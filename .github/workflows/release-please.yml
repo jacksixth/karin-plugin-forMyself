@@ -40,17 +40,25 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: 部署 js 到 build 分支（自动覆盖）
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./js/
-          publish_branch: build # 目标分支为 build
-          force_orphan: true # 强制覆盖，忽略历史
+      - name: 部署 js 到 build 分支（不使用 actions-gh-pages）
+        run: |
+            # 创建 build 分支（首次运行时需要）
+            git checkout --orphan build
+            git rm -rf .
+  
+            # 复制 js 文件夹下的所有内容到当前目录（不嵌套）
+            cp -r js/* ./
+  
+            # 提交更改
+            git add .
+            git commit -m "Deploy js content to build branch"
+  
+            # 推送并覆盖远程 build 分支
+            git push -f origin build
 
       - name: 打包
         run: |
-          zip -r build.zip js
+          zip -r build.zip js readme.md
 
       - name: 上传 build.zip
         uses: actions/upload-artifact@v4
