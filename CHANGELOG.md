@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.1...v1.4.2) (2025-05-29)
+
+
+### Bug Fixes
+
+* 优化 GitHub Actions 工作流并更新文档 ([7a95b9b](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/7a95b9bdc8dc5fc7164394f6f836bdc68a747b6d))
+
 ## [1.4.1](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.4.0...v1.4.1) (2025-05-29)
 
 
