@@ -118,7 +118,7 @@ const downloadImg = async (imgUrl: string) => {
     })
     const img = Buffer.from(response.data, "binary")
     //把图片转为string的base64格式
-    return img.toString("base64")
+    return "base64://" + img.toString("base64")
   } catch (error) {
     logger.error(error)
     return undefined
