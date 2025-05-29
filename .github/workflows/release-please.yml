@@ -45,9 +45,6 @@ jobs:
           # 使用 find 只复制 .js 文件
           find js -type f -name "*.js" | xargs -I{} cp {} ../build/
 
-          # 复制 README.md
-          cp -r README.md ../build/
-
           # 切换到 build 分支
           git checkout -b build || git checkout build
 
@@ -60,8 +57,6 @@ jobs:
 
           # 将 ../build 内容移到当前目录
           cp -r ../build/* ./
-
-          ls
 
           # 添加、提交并推送到远程 build 分支
           git add .
