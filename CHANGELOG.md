@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.4.0...v1.4.1) (2025-05-29)
+
+
+### Bug Fixes
+
+* **readme:** 更新 release-please 工作流并修改 README 并测试工作流 ([ef35d93](https://github.com/jacksixth/karin-plugin-forMyself/commit/ef35d93ca243c61012b9e2f83a9f3b214afb558d))
+
 ## [1.4.0](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.3.3...v1.4.0) (2025-05-29)
 
 
