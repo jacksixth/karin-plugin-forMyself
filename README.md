@@ -1,6 +1,6 @@
 # 使用
 
-直接使用js文件夹下js文件放入karin项目内/plugins/karin-plugin-example目录下
+直接使用build分支中js文件放入karin项目内/plugins/karin-plugin-example目录下
 
 或者下载releases里的压缩包一样的
 

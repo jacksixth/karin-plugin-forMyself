@@ -34,15 +34,19 @@ jobs:
 
       - name: 删除 js文件夹下 .d.ts 文件
         run: find js -name "*.d.ts" -type f -delete
-        
-      - name: 设置时区
-        run: |
-          sudo timedatectl set-timezone Asia/Shanghai
 
       - name: 设置git用户名和邮箱
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+
+      - name: 部署 js 到 build 分支（自动覆盖）
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./js/
+          publish_branch: build # 目标分支为 build
+          force_orphan: true # 强制覆盖，忽略历史
 
       - name: 打包
         run: |
