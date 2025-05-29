@@ -39,6 +39,9 @@ jobs:
       - name: 清理并提交到 build 分支
         run: |
 
+          #创建目标目录
+          mkdir -p ../build
+          
           # 将需要的文件复制到上一级目录
           cp -r js/* ../build && cp -r readme.md ../build
 
