@@ -1,25 +1,28 @@
+/**
+ * @file 日报插件
+ * @author jacksixth 
+ * @license GPL-3.0-only
+ * @description 1. 发送 #日报 时，获取摸鱼日报和每日资讯，并发送。2. 每天定时发送摸鱼日报和每日资讯到指定群组。
+ */
 import karin, { Contact, logger, segment } from "node-karin"
 import axios from "node-karin/axios"
-import { config } from "@/utils"
-
+const _config = {
+  notifyGroupNos: [""], //每天定时发送日报的群号
+}
 //定时发送每日资讯摸鱼日报的群号
 const meirizixunApi = "https://dayu.qqsuu.cn/weiyujianbao/apis.php?type=json"
 const moyuribaoApi = "https://dayu.qqsuu.cn/moyuribao/apis.php?type=json"
 //定时发送日报
-export const ribaoTask = karin.task(
-  "moyuribao",
-  "0 0 9 ? * *",
-  async () => {
-    const NOTICE_GROUP_NO = config().notifyGroupNos
-    NOTICE_GROUP_NO.forEach((groupNo) => {
-      const contact = karin.contact("group", groupNo + "")
-      karin.sendMsg(karin.getBotAll()[1].account.selfId, contact, [
-        segment.image("https://dayu.qqsuu.cn/moyuribao/apis.php"),
-        segment.image("https://dayu.qqsuu.cn/weiyujianbao/apis.php"),
-      ])
-    })
-  }
-)
+export const ribaoTask = karin.task("moyuribao", "0 0 9 ? * *", async () => {
+  const NOTICE_GROUP_NO = _config.notifyGroupNos
+  NOTICE_GROUP_NO.forEach((groupNo) => {
+    const contact = karin.contact("group", groupNo + "")
+    karin.sendMsg(karin.getBotAll()[1].account.selfId, contact, [
+      segment.image("https://dayu.qqsuu.cn/moyuribao/apis.php"),
+      segment.image("https://dayu.qqsuu.cn/weiyujianbao/apis.php"),
+    ])
+  })
+})
 //主动获取摸鱼日报、每日资讯
 export const ribao = karin.command(
   /^#?日报$/,

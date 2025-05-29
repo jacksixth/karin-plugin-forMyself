@@ -44,31 +44,9 @@ jobs:
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
-      - name: 删除开发依赖
-        run: npm run pr clean
-
-      - name: 删除文件
-        run: |
-          rm -rf src .github tsconfig.json eslint.config.mjs
-
-      - name: 推送build分支
-        run: |
-          sed -i '19d' .gitignore
-          git checkout -b build || git checkout build
-          git add .
-          if [ -z "$(git diff --cached --name-only)" ]; then
-            echo "No changes detected"
-            exit 0
-          else
-            git commit -m "chore(build): ${{ github.event.head_commit.message }}"
-          fi
-          git push origin build --force
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: 打包
         run: |
-          zip -r build.zip lib package.json README.md LICENSE CHANGELOG.md config resources
+          zip -r build.zip js
 
       - name: 上传 build.zip
         uses: actions/upload-artifact@v4
@@ -81,13 +59,7 @@ jobs:
         id: release_please
         with:
           release-type: node
-          package-name: "karin-plugin-forMyself"
-
-      # - name: 发布到 npm
-      #   run: npm run pub
-      #   if: ${{ steps.release_please.outputs.release_created }}
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          package-name: "karin-plugin-jacksixth-mycode"
 
       - name: 上传 release
         if: ${{ steps.release_please.outputs.release_created }}
