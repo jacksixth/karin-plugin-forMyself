@@ -53,7 +53,7 @@ jobs:
           git ls-files | xargs rm -f
 
           # 移除 node_modules 和 pnpm-lock.yaml（如果存在）
-          rm -rf node_modules pnpm-lock.yaml js
+          rm -rf node_modules pnpm-lock.yaml js ts image
 
           # 将 ../build 内容移到当前目录
           cp -r ../build/* ./
