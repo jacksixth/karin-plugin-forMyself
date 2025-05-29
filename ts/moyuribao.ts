@@ -1,6 +1,6 @@
 /**
  * @file 日报插件
- * @author jacksixth 
+ * @author jacksixth
  * @license GPL-3.0-only
  * @description 1. 发送 #日报 时，获取摸鱼日报和每日资讯，并发送。2. 每天定时发送摸鱼日报和每日资讯到指定群组。
  */
@@ -9,16 +9,24 @@ import axios from "node-karin/axios"
 const _config = {
   notifyGroupNos: [""], //每天定时发送日报的群号
 }
+// 在文件顶部添加https模块引入
+import https from "https"
+
+// 创建忽略SSL验证的httpsAgent
+const httpsAgent = new https.Agent({
+  rejectUnauthorized: false,
+})
 //定时发送日报   0 0 9 ? * * 为每天早上9:00
 export const ribaoTask = karin.task("moyuribao", "0 0 9 ? * *", async () => {
   const NOTICE_GROUP_NO = _config.notifyGroupNos
-  NOTICE_GROUP_NO.forEach((groupNo) => {
-    const contact = karin.contact("group", groupNo + "")
-    karin.sendMsg(karin.getBotAll()[1].account.selfId, contact, [
-      segment.image("https://dayu.qqsuu.cn/moyuribao/apis.php"),
-      segment.image("https://dayu.qqsuu.cn/weiyujianbao/apis.php"),
-    ])
-  })
+  sendImg(NOTICE_GROUP_NO, "group")
+  // NOTICE_GROUP_NO.forEach((groupNo) => {
+  //   const contact = karin.contact("group", groupNo + "")
+  //   karin.sendMsg(karin.getBotAll()[1].account.selfId, contact, [
+  //     segment.image("https://dayu.qqsuu.cn/moyuribao/apis.php"),
+  //     segment.image("https://dayu.qqsuu.cn/weiyujianbao/apis.php"),
+  //   ])
+  // })
 })
 //摸鱼日报、每日资讯API 可以自行替换
 const meirizixunApi = "https://dayu.qqsuu.cn/weiyujianbao/apis.php?type=json"
@@ -74,20 +82,45 @@ const sendImg = async (sendNoList: string[], type: "group" | "private") => {
 
 //获取摸鱼日报、每日资讯图片地址
 const getImgAddress = async () => {
+  let myrbImg: string | undefined = undefined
+  let mrzxImg: string | undefined = undefined
   try {
-    //每日资讯
-    const mrzx = await axios.get(meirizixunApi)
     //摸鱼日报
-    const myrb = await axios.get(moyuribaoApi)
-    return {
-      mrzx: mrzx.data?.code == 200 ? mrzx.data.data : undefined,
-      myrb: myrb.data?.code == 200 ? myrb.data.data : undefined,
-    }
+    const myrb = await axios.get(moyuribaoApi, {
+      httpsAgent,
+    })
+    //把返回的图片链接下载到本地转base64
+    if (myrb.data?.code == 200) myrbImg = await downloadImg(myrb.data?.data)
   } catch (error) {
     logger.error(error)
-    return {
-      mrzx: undefined,
-      myrb: undefined,
-    }
+  }
+  try {
+    //每日资讯
+    const mrzx = await axios.get(meirizixunApi, {
+      httpsAgent,
+    })
+    if (mrzx.data?.code == 200) mrzxImg = await downloadImg(mrzx.data?.data)
+  } catch (error) {
+    logger.error(error)
+  }
+  return {
+    myrb: myrbImg,
+    mrzx: mrzxImg,
+  }
+}
+//下载图片并转为Buffer
+const downloadImg = async (imgUrl: string) => {
+  try {
+    const response = await axios.get(imgUrl, {
+      responseType: "arraybuffer",
+      httpsAgent,
+      validateStatus: (status) => status === 200, // 校验响应状态码
+    })
+    const img = Buffer.from(response.data, "binary")
+    //把图片转为string的base64格式
+    return img.toString("base64")
+  } catch (error) {
+    logger.error(error)
+    return undefined
   }
 }
