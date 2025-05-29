@@ -3,7 +3,7 @@
  * @author jacksixth
  * @license GPL-3.0-only
  * @description 运行JavaScript代码
- * @example #rjs console.log("Hello, World!");
+ * @example #rjs return 10 + 20
  */
 import karin, { logger } from "node-karin"
 import * as vm from "vm"
@@ -33,6 +33,7 @@ export const runJS = karin.command("^#?rjs (.+)", async (e) => {
     clearInterval,
     karin,
     logger,
+    e,
   }
 
   const sandbox = vm.createContext(context)
@@ -40,14 +41,19 @@ export const runJS = karin.command("^#?rjs (.+)", async (e) => {
 
   try {
     const result = await script.runInContext(sandbox, { timeout })
-    e.reply(`运行结果: \n${result}`)
+    if (result === "") return e.reply("没有返回值")
+    const msg =
+      typeof result === "object" && result !== null
+        ? JSON.stringify(result, null, 2)
+        : String(result)
+    return e.reply(msg, { reply: true })
   } catch (error) {
     if (String(error) === "ERR_SCRIPT_EXECUTION_TIMEOUT") {
       logger.error("代码执行超时")
       e.reply("代码执行超时，请检查逻辑是否死循环或过于复杂。")
     } else {
       logger.error("运行JavaScript代码时出错:", error)
-      e.reply(`运行代码时出错: \n${String(error)}`)
+      e.reply(`运行代码时出错: \n ${String(error)}`)
     }
   }
 })
