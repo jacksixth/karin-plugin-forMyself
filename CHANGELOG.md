@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.8](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.7...v1.4.8) (2025-05-29)
+
+
+### Bug Fixes
+
+* **ts:** 重构 B 站解析器 ([aaf42d1](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/aaf42d1314aa379241052030158e49ef4ca662a8))
+
 ## [1.4.7](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.6...v1.4.7) (2025-05-29)
 
 
