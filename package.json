@@ -1,15 +1,14 @@
 {
-  "name": "karin-plugin-jacksixth-mycode",
+  "name": "karin-plugin-jacksixth-app",
   "version": "1.4.1",
-  "description": "karin plugin forMyself",
+  "description": "karin plugin jacksixthApp",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jacksixth/karin-plugin-forMyself.git"
+    "url": "git+https://github.com/jacksixth/karin-plugin-jacksixth-app.git"
   },
   "license": "GPL-3.0-only",
   "author": "jack",
   "type": "module",
-  "main": "lib/index.js",
   "scripts": {
     "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json"
   },
