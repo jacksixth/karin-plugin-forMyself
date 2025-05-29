@@ -38,10 +38,9 @@ jobs:
 
       - name: 清理并提交到 build 分支
         run: |
-          rm -rf node_modules
 
-          # 删除除 .js 外的文件
-          cd js && find . -type f ! -name "*.js" -delete && cd ..
+          # 将需要的文件复制到上一级目录
+          cp -r js/* ../build && cp -r readme.md ../build
 
           # 创建或切换到 build 分支
           git checkout -b build || git checkout build
@@ -51,18 +50,17 @@ jobs:
           git ls-files | xargs rm -f
 
           # 复制 js 和 readme.md 到根目录
-          cp -r js/* ./
-          cp -r readme.md ./
+          cp -r ../build/js/* ./
+          cp -r ../build/readme.md ./
 
           # 添加、提交并推送到远程 build 分支
           git add .
           git commit -m "更新 build 分支"
           git push -f origin build
-          git checkout main
-          
+
       - name: 打包
         run: |
-          zip -r build.zip js readme.md
+          zip -r build.zip ./*
 
       - name: 上传 build.zip
         uses: actions/upload-artifact@v4
