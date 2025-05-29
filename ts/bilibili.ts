@@ -1,6 +1,6 @@
 /**
  * @file B站链接解析
- * @author jacksixth 
+ * @author jacksixth
  * @license GPL-3.0-only
  * @description 解析B站视频、直播、动态、专栏等链接，并获取相关信息
  */
@@ -23,8 +23,8 @@ const _config = {
 // User-Agent 模拟浏览器
 const USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36"
-// 模拟 Cookie 这里实际使用时请替换为自己的 Cookie 当然这个cookie也能用
-const FAKE_COOKIE =
+// 模拟 Cookie 这里实际使用时请替换为自己的 Cookie 
+const COOKIE =
   "buvid3=51B3F03E-B2A3-6328-6A96-AAFFBE31585856233infoc; b_nut=1724515656; b_lsid=FC7E3D710_1918524A5D0; _uuid=3865BE2D-F4F3-E193-8BA9-A59CC89248FC57181infoc; buvid_fp=247a193ce4cb33454249d3fa0c07b5b1; buvid4=B9A20CE9-F21B-9CBB-C9A2-2BF87A4818F459449-024082416-HVDOzGeW%2BZDZz6AcFkXlwYVKj0krf8ZoxBG%2F5iBAGG5cfpYa1XGKbK%2FTuBwh%2BuYj; enable_web_push=DISABLE; home_feed_column=5; browser_resolution=1920-957"
 
 /**
@@ -71,6 +71,7 @@ const getVideoInfo = async (
         timeout: 10000,
         headers: {
           "User-Agent": USER_AGENT,
+          Cookie: COOKIE,
         },
       }
     )
@@ -118,6 +119,7 @@ const getLiveRoomInfo = async (id: string, logger: Logger) => {
         timeout: 10000,
         headers: {
           "User-Agent": USER_AGENT,
+          Cookie: COOKIE,
         },
       }
     )
@@ -174,6 +176,7 @@ const getArticleInfo = async (id: string, logger: Logger) => {
         timeout: 10000,
         headers: {
           "User-Agent": USER_AGENT,
+          Cookie: COOKIE,
         },
       }
     )
@@ -222,8 +225,7 @@ const getDynamicInfo = async (id: string, logger: Logger) => {
         },
         headers: {
           "User-Agent": USER_AGENT,
-          Referer: "https://www.bilibili.com/",
-          Cookie: FAKE_COOKIE,
+          Cookie: COOKIE,
         },
       }
     )
