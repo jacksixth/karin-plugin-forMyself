@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.4.3](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.2...v1.4.3) (2025-05-29)
+
+
+### Bug Fixes
+
+* **ci:** 优化 release-please 工作流中的文件处理 ([6fbfa29](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/6fbfa29b9b444db14cd4484b9b2be6aebaeafcc2))
+* **release-please:** 修改构建流程 ([7720522](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/7720522415b905847167c24d112309d9fc907fd7))
+* 优化 build 分支 更新流程 ([80ff3df](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/80ff3df16f75484f8ec6eda1fd8bd127100f6bb5))
+* 优化 release-please 工作流 ([f093f22](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/f093f223a9ea444ea958a782b1c982b3802ac78c))
+* 优化 release-please 工作流 ([cc01d5b](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/cc01d5b93852c1c4fa432f2b2c574e98e569dadc))
+* 优化 release-please 工作流中的文件复制步骤 ([2dffd42](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/2dffd422a5150f913adee7f2634d83d376ecac27))
+* 工作流修复 创建 build 目录并更新文件复制流程 ([d477ed8](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/d477ed8ec79c98979b728555d9a2ae5895679a08))
+
 ## [1.4.2](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.1...v1.4.2) (2025-05-29)
 
 
