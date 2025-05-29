@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.3.3...v1.4.0) (2025-05-29)
+
+
+### Features
+
+* **runCode:** 添加运行 JavaScript 代码功能 ([d7f4ce7](https://github.com/jacksixth/karin-plugin-forMyself/commit/d7f4ce7914188c6602a12588b194774be4acb9c3))
+
 ## [1.3.3](https://github.com/jacksixth/karin-plugin-forMyself/compare/v1.3.2...v1.3.3) (2025-04-21)
 
 
