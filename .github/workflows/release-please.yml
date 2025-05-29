@@ -16,7 +16,7 @@ jobs:
       - name: 安装node
         uses: actions/setup-node@v4
         with:
-          node-version: 21
+          node-version: 22
           registry-url: "https://registry.npmjs.org"
 
       - name: 安装pnpm
@@ -41,9 +41,9 @@ jobs:
 
           #创建目标目录
           mkdir -p ../build
-          
+
           # 将需要的文件复制到上一级目录
-          cp -r js/* ../build && cp -r readme.md ../build
+          cp -r js/* ../build/ && cp -r README.md ../build/
 
           # 创建或切换到 build 分支
           git checkout -b build || git checkout build
@@ -52,9 +52,8 @@ jobs:
           git reset
           git ls-files | xargs rm -f
 
-          # 复制 js 和 readme.md 到根目录
-          cp -r ../build/js/* ./
-          cp -r ../build/readme.md ./
+          # 复制 js 和 README.md 到根目录
+          cp -r ../build/* ./
 
           # 添加、提交并推送到远程 build 分支
           git add .
