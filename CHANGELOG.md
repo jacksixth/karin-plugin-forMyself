@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.6](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.5...v1.4.6) (2025-05-29)
+
+
+### Bug Fixes
+
+* **ts:** 在 moyuribao.ts 中调整图片 base64 编码格式 ([142fe5f](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/142fe5feddf1150ba89324d3ecab20dd1e241cf7))
+
 ## [1.4.5](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.4...v1.4.5) (2025-05-29)
 
 
