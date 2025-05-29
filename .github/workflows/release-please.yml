@@ -54,12 +54,14 @@ jobs:
           # 清理已有文件
           git reset
           git ls-files | xargs rm -f
-          
-          #测试
-          ls
+
+          # 移除 node_modules 和 pnpm-lock.yaml（如果存在）
+          rm -rf node_modules pnpm-lock.yaml js
 
           # 将 ../build 内容移到当前目录
           cp -r ../build/* ./
+
+          ls
 
           # 添加、提交并推送到远程 build 分支
           git add .
