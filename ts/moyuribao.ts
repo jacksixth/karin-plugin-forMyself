@@ -16,8 +16,8 @@ import https from "https"
 const httpsAgent = new https.Agent({
   rejectUnauthorized: false,
 })
-//定时发送日报   0 0 9 ? * * 为每天早上9:00
-export const ribaoTask = karin.task("moyuribao", "0 0 9 ? * *", async () => {
+//定时发送日报   0 0 9 * * * 为每天早上9:00
+export const ribaoTask = karin.task("moyuribao", "0 0 9 * * *", async () => {
   const NOTICE_GROUP_NO = _config.notifyGroupNos
   sendImg(NOTICE_GROUP_NO, "group")
   // NOTICE_GROUP_NO.forEach((groupNo) => {
