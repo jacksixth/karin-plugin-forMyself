@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.9](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.8...v1.4.9) (2025-06-05)
+
+
+### Bug Fixes
+
+* **ts/moyuribao:** 修正定时任务 cron 表达式,使其兼容linux的node-schedule ([9d303fe](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/9d303febce5f0d1e15ee5f3b7415822664321c59))
+
 ## [1.4.8](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.7...v1.4.8) (2025-05-29)
 
 
