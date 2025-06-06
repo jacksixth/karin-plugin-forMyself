@@ -5,9 +5,8 @@
  * @description 解析B站视频、直播、动态、专栏等链接，并获取相关信息
  */
 
-import { karin, Logger, logger, segment } from "node-karin"
+import { karin, Logger, logger, segment,config } from "node-karin"
 import axios from "node-karin/axios"
-
 //bilibili 解析配置
 const _config = {
   //当小程序分享解析成功时是否撤回该小程序，仅在群组内且有管理员权限且发送者是普通成员时有效
@@ -87,9 +86,9 @@ const getVideoInfo = async (
       pic,
       title,
       owner: { name },
-      stat: { view, danmaku },
+      stat: { view, danmaku, like, coin, favorite },
     } = data
-
+    //like 点赞 coin 投币 favorite 收藏
     return [
       segment.image(pic),
       segment.text(
@@ -98,6 +97,9 @@ const getVideoInfo = async (
           title,
           `UP: ${name}`,
           `${humanNum(view)}播放 ${humanNum(danmaku)}弹幕`,
+          `点赞: ${humanNum(like)}  投币: ${humanNum(coin)}  收藏: ${humanNum(
+            favorite
+          )}`,
           `https://www.bilibili.com/video/${bvid}`,
         ].join("\n")
       ),
