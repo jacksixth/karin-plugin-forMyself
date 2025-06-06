@@ -37,7 +37,7 @@ export const runJS = karin.command("^#?rjs (.+)", async (e) => {
   }
 
   const sandbox = vm.createContext(context)
-  const script = new vm.Script(`(async () => { ${code} })()`)
+  const script = new vm.Script(`(async () => { return ${code} })()`)
 
   try {
     const result = await script.runInContext(sandbox, { timeout })
