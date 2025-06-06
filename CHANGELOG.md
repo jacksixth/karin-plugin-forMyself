@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.9...v1.5.0) (2025-06-06)
+
+
+### Features
+
+* **bilibili:** 增加视频信息点赞、投币、收藏数据 ([d75fd4c](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/d75fd4cc07146e946ab97322adf8c7d74a2185d6))
+
 ## [1.4.9](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.8...v1.4.9) (2025-06-05)
 
 
