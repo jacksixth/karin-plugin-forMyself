@@ -27,7 +27,7 @@ type GameState =
 
 const data: { [key: string]: GameState } = {}
 
-// 开始游戏 [弹仓]? [模式 1|2]?
+// 开始游戏 [弹巢]? [模式 1|2]?
 export const startgame = karin.command(
   /^#?(?:开始游戏)(?:\s+(\S+)(?:\s+(\S+))?)?$/,
   async (e) => {
@@ -51,7 +51,7 @@ export const startgame = karin.command(
       bulletNum = _bulletNum
     }
     if (isNaN(parseInt(bulletNum)) || parseInt(bulletNum) < 2) {
-      await e.reply("弹仓参数错误,应为大于1的数字", { reply: true })
+      await e.reply("弹巢参数错误,应为大于1的数字", { reply: true })
       return true
     }
 
@@ -80,6 +80,11 @@ export const startgame = karin.command(
       }
     }
     data[e.groupId] = save
+    e.reply(
+      `游戏开始，当前为模式为${
+        gameMode == "oneGun" ? "单枪模式" : "多枪模式"
+      }，左轮弹巢可以装${bulletNum}发子弹，现在装了一发，现在弹巢转动起来咯。`
+    )
   },
   {
     event: "message.group",
