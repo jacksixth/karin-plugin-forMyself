@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.2](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.6.1...v1.6.2) (2025-06-17)
+
+
+### Bug Fixes
+
+* **ts:** 优化加游戏命令回复逻辑 ([a5057ca](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/a5057ca03dacdc81e12ff23b738eefcb303c84fa))
+
 ## [1.6.1](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.6.0...v1.6.1) (2025-06-17)
 
 
