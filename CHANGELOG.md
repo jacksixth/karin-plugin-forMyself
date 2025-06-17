@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.6.0...v1.6.1) (2025-06-17)
+
+
+### Bug Fixes
+
+* **ts:** 修改游戏开始命令的参数名称和回复消息 ([134ea98](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/134ea98143234755b53fc569b6df87a1be98158f))
+
 ## [1.6.0](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.5.0...v1.6.0) (2025-06-17)
 
 
