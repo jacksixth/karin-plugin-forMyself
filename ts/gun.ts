@@ -134,7 +134,7 @@ export const turntable = karin.command(
           realBullets: Math.floor(Math.random() * save.bulletNum) + 1,
           bullets: save.bulletNum,
         }
-        e.reply(
+        await e.reply(
           `加入游戏，你当前可开枪数：${save.players[e.sender.userId].bullets}`,
           {
             reply: true,
