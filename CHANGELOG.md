@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.5.0...v1.6.0) (2025-06-17)
+
+
+### Features
+
+* **ts:** 添加俄罗斯转盘游戏功能 - 待完善readme和测试 ([ed1bd8d](https://github.com/jacksixth/karin-plugin-jacksixth-app/commit/ed1bd8d1e62787d1324d5021dc9d1d63cdb4f44e))
+
 ## [1.5.0](https://github.com/jacksixth/karin-plugin-jacksixth-app/compare/v1.4.9...v1.5.0) (2025-06-06)
 
 
